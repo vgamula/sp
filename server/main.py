@@ -1,6 +1,9 @@
 import asyncio
+
 import uvloop
 from aiohttp import web
+
+from .routes import make_routes
 
 
 async def handle(request: web.Request):
@@ -9,6 +12,7 @@ async def handle(request: web.Request):
 
 def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
     app = web.Application(loop=loop)
+    make_routes(app)
     app.router.add_get('/', handle)
     return app
 
