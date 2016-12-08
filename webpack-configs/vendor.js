@@ -24,7 +24,7 @@ const config = {
     },
 
     output: {
-        path: path.resolve('.' + destinationPath),
+        path: destinationPath,
         filename: '[name]-[hash].js',
         library: '[name]',
     },
@@ -50,7 +50,7 @@ const config = {
 
     resolve: {
         root: [
-            sourcePath
+            path.resolve('.' + sourcePath),
         ],
         modulesDirectories: ['node_modules'],
         extensions: ['', '.js']

@@ -2,8 +2,18 @@ require('babel-polyfill')
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import Application from './app'
 
-const App = () => <h1>Hello, World!</h1>
+
+ReactDOM.render(<Application name="World"/>, document.getElementById('app'))
 
 
-ReactDOM.render(<App hello="1"/>, document.body)
+if (module.hot) {
+    module.hot.accept(['./app', './index'], () => {
+        const NextApp = require('./app').default  // eslint-disable-line
+        ReactDOM.render(
+            <NextApp name="World"/>,
+            document.getElementById('app')
+        )
+    })
+}

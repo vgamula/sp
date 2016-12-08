@@ -10,3 +10,7 @@ async def handle_403(request: web.Request):
 @template('core/404.jinja2')
 async def handle_404(request: web.Request):
     return {}
+
+@template('app.jinja2')
+async def application(request: web.Request):
+    return {}

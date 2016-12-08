@@ -1,0 +1,10 @@
+{% extends 'base.jinja2' %}
+
+{% block content %}
+    <div id="app"></div>
+{% endblock %}
+
+{% block js_endpage %}
+    {{ get_bundle('vendor', 'VENDOR', app['webpack_config'], True) }}
+    {{ get_bundle('main', 'DEFAULT', app['webpack_config'], not app.debug) }}
+{% endblock %}

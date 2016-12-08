@@ -53,7 +53,7 @@ module.exports = {
 
     resolve: {
         root: [
-            sourcePath,
+            path.resolve('.' + sourcePath),
         ],
         modulesDirectories: ['node_modules'],
         extensions: ['', '.js']

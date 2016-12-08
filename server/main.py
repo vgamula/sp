@@ -25,6 +25,8 @@ def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
     middlewares = [error_pages()]
     app = web.Application(loop=loop, middlewares=middlewares, debug=settings.DEBUG)
 
+    app['webpack_config'] = settings.WEBPACK_CONFIG
+
     # Session setup
     session_setup(app, EncryptedCookieStorage(settings.SECRET_KEY))
 
@@ -33,7 +35,11 @@ def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
     app['db'] = client.sp
 
     # Templates setup
-    jinja2_setup(app, loader=jinja2.FileSystemLoader(str(SERVER_ROOT / 'templates')))
+    jinja2_setup(
+        app,
+        loader=jinja2.FileSystemLoader(str(SERVER_ROOT / 'templates')),
+        extensions=['server.core.webpack_loader.contrib.jinja2ext.WebpackExtension']
+    )
 
     make_routes(app, str(SERVER_ROOT / 'static'))
     app.router.add_get('/', handle)
