@@ -1,5 +1,6 @@
 aiodns==1.1.1
 aiohttp==1.1.6
+aiohttp_jinja2==0.12.0
 aiohttp_session==0.8.0
 cchardet==1.1.1
 cryptography==1.6
