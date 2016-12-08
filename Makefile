@@ -1,2 +1,2 @@
 run:
-	PYTHONASYNCIODEBUG=1 python server/main.py
+	PYTHONASYNCIODEBUG=1 python3 -m server.main
