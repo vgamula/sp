@@ -1,0 +1,30 @@
+{
+  "name": "sp",
+  "version": "0.0.1",
+  "description": "Secret Project",
+  "main": "client/index.js",
+  "repository": "git@github.com:vgamula/sp.git",
+  "author": "Volodymyr Gamula <v.gamula@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel": "6.5.2",
+    "babel-core": "6.18.2",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.2.9",
+    "babel-polyfill": "6.16.0",
+    "babel-preset-es2015": "6.18.0",
+    "babel-preset-react": "6.16.0",
+    "babel-preset-stage-0": "6.16.0",
+    "eslint": "3.11.1",
+    "eslint-loader": "1.6.1",
+    "eslint-plugin-react": "^6.8.0",
+    "react-hot-loader": "3.0.0-beta.6",
+    "webpack": "1.14.0",
+    "webpack-bundle-tracker": "0.1.0",
+    "webpack-dev-server": "1.16.2"
+  },
+  "dependencies": {
+    "react": "15.4.1",
+    "react-dom": "15.4.1"
+  }
+}

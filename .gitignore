@@ -92,3 +92,5 @@ ENV/
 
 server/static/dist
 !server/static/.gitkeep
+
+node_modules
