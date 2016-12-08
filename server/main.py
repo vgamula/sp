@@ -9,6 +9,7 @@ from aiohttp_session.cookie_storage import EncryptedCookieStorage
 from aiohttp_jinja2 import setup as jinja2_setup
 from motor.motor_asyncio import AsyncIOMotorClient
 
+from server.core.middlewares import error_pages
 from . import settings
 from .routes import make_routes
 
@@ -21,7 +22,7 @@ async def handle(request: web.Request):
 
 
 def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
-    middlewares = []
+    middlewares = [error_pages()]
     app = web.Application(loop=loop, middlewares=middlewares, debug=settings.DEBUG)
 
     # Session setup

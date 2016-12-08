@@ -90,3 +90,5 @@ ENV/
 
 .idea
 
+server/static/dist
+!server/static/.gitkeep
