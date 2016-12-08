@@ -4,7 +4,7 @@ import pathlib
 import uvloop
 from aiohttp import web
 
-from server.core.config_utils import load_config
+from server import settings
 from server.routes import make_routes
 
 
@@ -18,8 +18,6 @@ async def handle(request: web.Request):
 
 def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
     app = web.Application(loop=loop)
-    config = load_config(str(SERVER_ROOT / 'settings' / 'settings.yaml'))
-    app['config'] = config
     make_routes(app, str(SERVER_ROOT / 'static'))
     app.router.add_get('/', handle)
     return app
