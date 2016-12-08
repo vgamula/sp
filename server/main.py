@@ -4,8 +4,8 @@ import pathlib
 import uvloop
 from aiohttp import web
 
-from server import settings
-from server.routes import make_routes
+from . import settings
+from .routes import make_routes
 
 
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent
