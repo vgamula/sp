@@ -6,6 +6,7 @@ require('babel-polyfill');
 const isProduction = process.env.NODE_ENV === 'production';
 console.log(`Production mode - ${isProduction}`);
 
+const projectPath = path.resolve(__dirname, '..');
 const sourcePath = './client/';
 const destinationPath = './server/static/dist/';
 const statsFile = destinationPath + 'vendor-stats.json';
@@ -50,7 +51,7 @@ const config = {
 
     resolve: {
         root: [
-            path.resolve('.' + sourcePath),
+            path.join(projectPath, sourcePath),
         ],
         modulesDirectories: ['node_modules'],
         extensions: ['', '.js']

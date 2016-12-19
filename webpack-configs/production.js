@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 require('babel-polyfill');
 
+const projectPath = path.resolve(__dirname, '..');
 const sourcePath = './client/';
 const sourceFilePath = './client/index';
 const destinationPath = './server/static/dist/';
@@ -53,7 +54,8 @@ module.exports = {
 
     resolve: {
         root: [
-            path.resolve('.' + sourcePath),
+            // path.resolve('.' + sourcePath),
+            path.join(projectPath, sourcePath),
         ],
         modulesDirectories: ['node_modules'],
         extensions: ['', '.js']
