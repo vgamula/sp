@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 require('babel-polyfill');
 
-const projectPath = path.resolve(__dirname, '..');
+const projectPath = path.resolve(__dirname, '..')
 const sourcePath = './client/';
 const sourceFilePath = './client/index';
 const destinationPath = './server/static/dist/';
@@ -23,7 +23,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve('.' + destinationPath),
+        path: path.join(projectPath, destinationPath),
         filename: '[name]-[hash].js',
     },
 
