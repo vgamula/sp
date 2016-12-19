@@ -11,7 +11,6 @@ def error_pages():
         async def middleware_handler(request):
             is_api_request = request.headers.get('API-Request')
             try:
-                # import ipdb; ipdb.set_trace()
                 response = await handler(request)
                 override = overrides.get(response.status)
                 if override is not None and not is_api_request:
@@ -19,7 +18,6 @@ def error_pages():
                 else:
                     return response
             except web.HTTPException as ex:
-                # import ipdb; ipdb.set_trace()
                 override = overrides.get(ex.status)
                 if override is not None and not is_api_request:
                     return await override(request)

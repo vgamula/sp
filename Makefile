@@ -7,7 +7,7 @@ run:
 watch: build_dll
 	node webpack-configs/server.js
 
-build: build_dll_prod
+build: clean build_dll_prod
 	${WEBPACK} -p --config webpack-configs/production.js --progress --colors
 
 build_dll:
