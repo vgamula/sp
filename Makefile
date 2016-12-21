@@ -19,6 +19,9 @@ build_dll_prod:
 lint:
 	./node_modules/.bin/eslint client/
 
+test:
+	py.test -x
+
 clean:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo)" | xargs rm -rf
 	rm -rf server/static/dist

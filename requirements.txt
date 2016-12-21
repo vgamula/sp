@@ -5,5 +5,7 @@ aiohttp_session==0.8.0
 cchardet==1.1.1
 cryptography==1.6
 motor==1.1
-PyYAML==3.12
+WTForms-JSON==0.3.0
+passlib==1.7.0
 uvloop==0.6.7
+WTForms==2.1

@@ -9,7 +9,7 @@ from aiohttp_session.cookie_storage import EncryptedCookieStorage
 from aiohttp_jinja2 import setup as jinja2_setup
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from server.core.middlewares import error_pages
+from .core.middlewares import error_pages
 from . import settings
 from .routes import make_routes
 

@@ -1,4 +1,7 @@
 -r requirements.txt
 
+coverage==4.2
 ipython
 ipdb
+pytest
+pytest-cov
