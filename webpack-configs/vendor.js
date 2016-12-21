@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -13,7 +15,7 @@ const statsFile = destinationPath + 'vendor-stats.json';
 const publicPath = 'http://localhost:3000/static/dist/';
 
 const config = {
-    context: path.resolve(__dirname, '..'),
+    context: projectPath,
 
     entry: {
         vendor: [
@@ -31,16 +33,15 @@ const config = {
     },
 
     plugins: [
-        new webpack.optimize.DedupePlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.optimize.DedupePlugin(),
-        new BundleTracker({filename: statsFile}),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.DllPlugin({
             name: '[name]',
             path: path.join(destinationPath, '[name]-manifest.json'),
             context: sourcePath,
-        })
+        }),
+        new BundleTracker({filename: statsFile}),
     ],
 
     module: {
@@ -54,13 +55,13 @@ const config = {
             path.join(projectPath, sourcePath),
         ],
         modulesDirectories: ['node_modules'],
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
     },
 
     resolveLoader: {
         modulesDirectories: ['node_modules'],
         moduleTemplates: ['*-loader', '*'],
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
     },
     devtool: (isProduction ? 'eval' : 'source-map'),
 };
@@ -70,7 +71,7 @@ if (isProduction) {
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production')
+                NODE_ENV: JSON.stringify('production'),
             }
         }),
         new webpack.optimize.AggressiveMergingPlugin(),

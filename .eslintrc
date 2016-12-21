@@ -1,4 +1,5 @@
 {
+  "extends": "airbnb",
   "env": {
     "browser": true,
     "node": true
@@ -6,5 +7,16 @@
   "plugins": [
     "react"
   ],
-  "parser": "babel-eslint"
+  "parser": "babel-eslint",
+  "rules": {
+    "import/first": 0,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "indent": [1, 4],
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "react/jsx-indent": [2, 4],
+    "semi": [2, "never"]
+  }
 }

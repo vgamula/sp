@@ -17,7 +17,7 @@ build_dll_prod:
 	NODE_ENV=production ${WEBPACK} -p --config webpack-configs/vendor.js --progress --colors
 
 lint:
-	./node_modules/.bin/eslint assets/src
+	./node_modules/.bin/eslint client/
 
 clean:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo)" | xargs rm -rf

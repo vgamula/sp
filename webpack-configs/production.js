@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -13,7 +15,7 @@ const vendorManifestFile = destinationPath + 'vendor-manifest.json';
 const manifest = require('.' + vendorManifestFile);
 
 module.exports = {
-    context: path.resolve(__dirname, '..'),
+    context: projectPath,
 
     entry: {
         main: [
@@ -23,7 +25,7 @@ module.exports = {
     },
 
     output: {
-        path: path.join(projectPath, destinationPath),
+        path: destinationPath,
         filename: '[name]-[hash].js',
     },
 
@@ -33,8 +35,8 @@ module.exports = {
         new BundleTracker({filename: statsFile}),
         new webpack.DefinePlugin({
             'process.env': {
-                NODE_ENV: JSON.stringify('production')
-            }
+                NODE_ENV: JSON.stringify('production'),
+            },
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
@@ -49,21 +51,20 @@ module.exports = {
     module: {
         loaders: [
             {test: /\.js$/, exclude: /node_modules/, loaders: ['babel', 'eslint-loader']},
-        ]
+        ],
     },
 
     resolve: {
         root: [
-            // path.resolve('.' + sourcePath),
             path.join(projectPath, sourcePath),
         ],
         modulesDirectories: ['node_modules'],
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
     },
 
     resolveLoader: {
         modulesDirectories: ['node_modules'],
         moduleTemplates: ['*-loader', '*'],
-        extensions: ['', '.js']
+        extensions: ['', '.js'],
     },
 };

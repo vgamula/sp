@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
@@ -15,7 +17,7 @@ const manifest = require('.' + vendorManifestFile);
 
 
 module.exports = {
-    context: path.resolve(__dirname, '..'),
+    context: projectPath,
 
     entry: {
         main: [
@@ -27,7 +29,7 @@ module.exports = {
     },
 
     output: {
-        path: path.resolve('.' + destinationPath),
+        path: destinationPath,
         filename: '[name]-[hash].js',
         publicPath: publicPath,
     },

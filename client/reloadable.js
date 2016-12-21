@@ -1,3 +1,7 @@
 import React from 'react'
 
-export const Test = () => <div>This is an example of hot reloading.</div>
+export const Test = () => (  // eslint-disable-line
+    <div>
+        This is an example of hot reloading.
+    </div>
+)
