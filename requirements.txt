@@ -4,8 +4,9 @@ aiohttp_jinja2==0.12.0
 aiohttp_session==0.8.0
 cchardet==1.1.1
 cryptography==1.6
+jsl==0.2.4
+jsonschema==2.5.1
 motor==1.1
-WTForms-JSON==0.3.0
 passlib==1.7.0
+rororo==1.0.0a5
 uvloop==0.6.7
-WTForms==2.1

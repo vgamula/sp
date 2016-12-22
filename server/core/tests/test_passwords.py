@@ -7,6 +7,7 @@ params = [
     'World',
 ]
 
+
 @pytest.mark.parametrize('password', params)
 def test_generated_password(password):
     hash = passwords.generate_password(password)
