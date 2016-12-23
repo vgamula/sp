@@ -10,8 +10,8 @@ from aiohttp_jinja2 import setup as jinja2_setup
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from .core.middlewares import error_pages
-from . import settings
 from .routes import make_routes
+from . import settings
 
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent
 SERVER_ROOT = PROJECT_ROOT / 'server'
