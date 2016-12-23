@@ -5,6 +5,6 @@
 {% endblock %}
 
 {% block js_endpage %}
-    {{ get_bundle('vendor', 'VENDOR', app['webpack_config'], True) }}
-    {{ get_bundle('main', 'DEFAULT', app['webpack_config'], not app.debug) }}
+    {{ get_bundle('vendor', 'VENDOR', app['settings']['webpack_config'], True) }}
+    {{ get_bundle('main', 'DEFAULT', app['settings']['webpack_config'], not app.debug) }}
 {% endblock %}

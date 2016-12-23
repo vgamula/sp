@@ -25,7 +25,7 @@ def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
     middlewares = [error_pages()]
     app = web.Application(loop=loop, middlewares=middlewares, debug=settings.DEBUG)
 
-    app['webpack_config'] = settings.WEBPACK_CONFIG
+    app['settings'] = settings
 
     # Session setup
     session_setup(app, EncryptedCookieStorage(settings.SECRET_KEY))
