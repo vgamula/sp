@@ -3,5 +3,34 @@
 {% block content %}
     <div>
         This is signup page!
+        <form action="/signup" method="POST">
+            <div>
+                <input type="email" name="email" value="{{ form.data.email }}"/>
+                {% if form.errors.email %}
+                    <p>{{ form.errors.email }}</p>
+                {% endif %}
+            </div>
+            <div>
+                <input type="password" name="password" value="{{ form.data.password }}"/>
+                {% if form.errors.password %}
+                    <p>{{ form.errors.password }}</p>
+                {% endif %}
+            </div>
+            <div>
+                <input type="password" name="confirm" value="{{ form.data.confirm }}"/>
+                {% if form.errors.confirm %}
+                    <p>{{ form.errors.confirm }}</p>
+                {% endif %}
+            </div>
+            <div>
+                <input type="checkbox" name="accept_tos" {% if form.data.accept_tos == 'on' %}checked="checked"{% endif %} />
+                {% if form.errors.accept_tos %}
+                    <p>{{ form.errors.accept_tos }}</p>
+                {% endif %}
+            </div>
+            <button type="submit">
+                Submit
+            </button>
+        </form>
     </div>
 {% endblock %}
