@@ -27,7 +27,7 @@ const config = {
     },
 
     output: {
-        path: destinationPath,
+        path: path.join(projectPath, destinationPath),
         filename: '[name]-[hash].js',
         library: '[name]',
     },

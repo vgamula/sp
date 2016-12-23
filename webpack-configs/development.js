@@ -3,6 +3,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
+const AnyBarWebpackPlugin = require('anybar-webpack');
 require('babel-polyfill');
 
 const projectPath = path.resolve(__dirname, '..');
@@ -29,7 +30,7 @@ module.exports = {
     },
 
     output: {
-        path: destinationPath,
+        path: path.join(projectPath, destinationPath),
         filename: '[name]-[hash].js',
         publicPath: publicPath,
     },
@@ -37,12 +38,13 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new BundleTracker({filename: statsFile}),
         new webpack.DllReferencePlugin({
             name: 'vendor',
             context: sourcePath,
             manifest: manifest,
         }),
+        new BundleTracker({filename: statsFile}),
+        new AnyBarWebpackPlugin(),
     ],
 
     module: {

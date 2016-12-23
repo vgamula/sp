@@ -2,9 +2,14 @@
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
 const config = require('./development.js');
 
-new WebpackDevServer(webpack(config), {
+const compiler = webpack(config);
+compiler.apply(new DashboardPlugin());
+
+new WebpackDevServer(compiler, {
     publicPath: config.output.publicPath,
     hot: true,
     inline: true,

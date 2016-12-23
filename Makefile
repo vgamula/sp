@@ -1,11 +1,12 @@
 WEBPACK=./node_modules/.bin/webpack
+WEBPACK_DASHBOARD=./node_modules/.bin/webpack-dashboard
 
 
 run:
 	PYTHONASYNCIODEBUG=1 python3 -m server.main
 
 watch: build_dll
-	node webpack-configs/server.js
+	${WEBPACK_DASHBOARD} -- node webpack-configs/server.js
 
 build: clean build_dll_prod
 	${WEBPACK} -p --config webpack-configs/production.js --progress --colors

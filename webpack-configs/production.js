@@ -25,7 +25,7 @@ module.exports = {
     },
 
     output: {
-        path: destinationPath,
+        path: path.join(projectPath, destinationPath),
         filename: '[name]-[hash].js',
     },
 
