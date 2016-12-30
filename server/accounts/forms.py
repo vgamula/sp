@@ -26,7 +26,10 @@ class RegistrationForm(TrafaretForm):
 
     async def save(self):
         data = self.data
-        return await self.db.users.insert_one({
+        data_to_save = {
             'email': data['email'],
-            'password': data['password'],
-        })
+            'password': generate_password(data['password']),
+        }
+        result = await self.db.users.insert_one(data_to_save)
+        data_to_save['_id'] = result.inserted_id
+        return data_to_save
