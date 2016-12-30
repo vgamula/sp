@@ -1,5 +1,6 @@
 import trafaret as t
 
+from server.core.passwords import generate_password
 from server.core.forms import TrafaretForm, TrafaretError
 
 
@@ -15,7 +16,17 @@ class RegistrationForm(TrafaretForm):
         errors = {}
         if self.data['confirm'] != self.data['password']:
             errors['confirm'] = 'Passwords should match.'
-        # TODO: Add email existing checking.
+
+        if await self.db.users.find_one({'email': self.data['email']}):
+            errors['email'] = 'User with this email is already registered.'
+
         if errors:
             raise TrafaretError(errors)
         return None
+
+    async def save(self):
+        data = self.data
+        return await self.db.users.insert_one({
+            'email': data['email'],
+            'password': data['password'],
+        })

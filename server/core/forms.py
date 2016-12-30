@@ -1,4 +1,5 @@
 import asyncio
+from motor.motor_asyncio import AsyncIOMotorDatabase
 
 import trafaret
 
@@ -13,9 +14,13 @@ class TrafaretForm:
     result = None
     errors = None
 
-    def __init__(self, data):
-        self.data = data
-        errors = {}
+    def __init__(self, data: dict=None, db: AsyncIOMotorDatabase=None):
+        self.db = db
+        self.errors = {}
+        if data:
+            self.data = data
+        else:
+            self.data = {}
 
     async def extra_validation(self):
         pass
@@ -31,3 +36,6 @@ class TrafaretForm:
         except TrafaretError as e:
             self.errors = e.errors
             return False
+
+    async def save(self):
+        pass

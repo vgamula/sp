@@ -6,10 +6,14 @@ from .forms import RegistrationForm
 
 @template('accounts/signup.jinja2')
 async def signup(request: web.Request):
-    data = await request.post()
-    form = RegistrationForm(data)
-    form_valid = await form.is_valid()
-    import ipdb; ipdb.set_trace()
+    if request.method == 'POST':
+        data = await request.post()
+        form = RegistrationForm(data, db=request.app['db'])
+        if await form.is_valid():
+            user = await form.save()
+            return {'form': form, 'message': 'User has been registered'}
+    else:
+        form = RegistrationForm()
     return {'form': form}
 
 
