@@ -1,6 +1,6 @@
 -r requirements.txt
 
-coverage==4.2
+coverage
 ipython
 ipdb
 pytest
