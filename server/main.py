@@ -21,9 +21,10 @@ async def handle(request: web.Request):
     return web.Response(text='Hello, World!')
 
 
-def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
+def make_app(loop: asyncio.AbstractEventLoop=None) -> web.Application:
     middlewares = [error_pages()]
-    app = web.Application(loop=loop, middlewares=middlewares, debug=settings.DEBUG)
+    app = web.Application(middlewares=middlewares, debug=settings.DEBUG)
+    app._set_loop(loop)
 
     app['settings'] = settings
 
@@ -44,6 +45,7 @@ def make_app(loop: asyncio.AbstractEventLoop) -> web.Application:
     make_routes(app, str(SERVER_ROOT / 'static'))
     app.router.add_get('/', handle)
     return app
+
 
 
 if __name__ == '__main__':

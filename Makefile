@@ -21,7 +21,7 @@ lint:
 	./node_modules/.bin/eslint client/
 
 test:
-	py.test -x
+	py.test -x -s
 
 clean:
 	find . | grep -E "(__pycache__|\.pyc|\.pyo)" | xargs rm -rf

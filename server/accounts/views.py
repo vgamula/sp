@@ -33,3 +33,7 @@ async def logout(request: web.Request):
     session = await get_session(request)
     auth.logout_user(session)
     return web.HTTPFound('/')
+
+
+async def simple_test_view(request: web.Request):
+    return web.Response(body='Test response')
