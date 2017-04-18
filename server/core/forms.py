@@ -10,7 +10,7 @@ class TrafaretError(Exception):
 
 
 class TrafaretForm:
-    checker = None
+    fields = None
     result = None
     errors = None
 
@@ -27,11 +27,11 @@ class TrafaretForm:
 
     async def is_valid(self):
         try:
-            self.result = self.checker.check(self.data)
+            self.result = self.fields.check(self.data)
             await self.extra_validation()
             return True
         except trafaret.DataError:
-            self.errors = trafaret.extract_error(self.checker, self.data)
+            self.errors = trafaret.extract_error(self.fields, self.data)
             return False
         except TrafaretError as e:
             self.errors = e.errors
